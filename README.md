@@ -29,26 +29,21 @@ For now, no special rules are set for its project, If you wanna contribute to th
     - the executable in software repository of each linux distro might be outdated, install the lastest cmake [via](https://cmake.org/install/) 
 2. gcc / clang / msvc
     - install one of them is enough
+3. conan
+    - download [conan](https://docs.conan.io/en/latest/introduction.html#) via pip: `pip install conan`
+    - make a default profile: `conan profile new default --detect --force`
 
 ## How to compile
 1. `mkdir build && cd build`
+2. `conan install ..`
 2. `cmake ..`
 3. `make`
 4. Find the lib file at `YOUR_PROJECT_DIR/build/src/libMeshGenerator.a`
 
-Also, there is quick compiling script for you to handle these cumbersome steps.
-This script sits at `YOUR_PROJECT_DIR/script/qmake.sh`. You can make a soft link for ease.
-1. `cd build && chmod +x qmake.sh && cd -`
-2. `ln -s script/qmake.sh qm`
-3. `./qm`
-4. Find the lib file at `YOUR_PROJECT_DIR/build/src/libMeshGenerator.a`
-
-after these steps, you can simply compile code with ./qm
-
 ## 3rd party lib
 1. mesquite. One of the core components of our implement, mainly for optimizing quadmesh
 2. pybind11, for wrapping a python module of the quadmesh library
-3. pmp-library, hmmm, reconsidering its necessity
+3. pmp-library: consider as a must
 
 ## How to test
 After compiling the whole program, you can find a tests executable file in `YOUR_PROJECT_DIR/build/test`.
@@ -96,14 +91,3 @@ The class that takes a mesh object and return the optimized version of it. Metho
 
 ## MeshIO
 The class that can do the input and output of mesh
-
-# TODO
-1. make a MVP
-    - create the entry function. given polygon return mesh
-    - ~~create division to wrap the polygon coordinates information~~
-    - ~~create Enum for different division type~~
-    - ~~create division classifier which is only able to recognize a quadrilateral (ddl 2020/4/3)~~
-    - ~~create a mesher to wrap the division and make a quadmesh (ddl 2020/4/4)~~
-    - create a Mesh class to hold the mesh
-    - create a mesh optimizer with mesquite
-    - create a method to output mesh

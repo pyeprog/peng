@@ -8,12 +8,21 @@ add_library(project_warning INTERFACE)
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warning)
 
-add_library(project_option INTERFACE)
-target_compile_features(project_option INTERFACE cxx_std_17)
+add_library(project_options INTERFACE)
+target_compile_features(project_options INTERFACE cxx_std_17)
 
 # third party
-include(cmake/ExternFetcher.cmake)
-git_extern_fetcher(pmp-library https://github.com/pmp-library/pmp-library.git 1.2.0)
+include(ExternalProject)
+ExternalProject_Add(pmp-library
+        GIT_REPOSITORY https://github.com/pmp-library/pmp-library.git
+        GIT_TAG 1.2.0
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/extern
+        BINARY_DIR ${CMAKE_SOURCE_DIR}
+        )
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
 
 add_executable(app src/main.cpp test/test_empty.cpp)
 
