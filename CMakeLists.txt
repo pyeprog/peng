@@ -12,14 +12,19 @@ add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
 
 # third party
-include(ExternalProject)
-ExternalProject_Add(pmp-library
+# download extern at configuration time
+include(cmake/DownloadProject.cmake)
+download_project(
+        PROJ pmp-library
         GIT_REPOSITORY https://github.com/pmp-library/pmp-library.git
         GIT_TAG 1.2.0
+        UPDATE_DISCONNECTED 1
         SOURCE_DIR ${CMAKE_SOURCE_DIR}/extern
         BINARY_DIR ${CMAKE_SOURCE_DIR}
-        )
+)
+add_subdirectory(${CMAKE_SOURCE_DIR}/extern/pmp-library ${CMAKE_BINARY_DIR}/pmp-library)
 
+# config the conan profile and run conan install first
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
