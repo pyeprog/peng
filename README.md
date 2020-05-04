@@ -50,3 +50,7 @@ After compiling the project, find tests executable in build/bin and run
 - Tree: template class for making a tree data structure
 - DivisionTypeChecker: to get the type of division
 - Mesher: TriMesher / QuadMesher / PentaMesher for generating SurfaceMesh obj from Division
+
+
+# Contribution Notices
+1. use google style, for clion user check [this](https://blog.jetbrains.com/clion/2015/07/new-clion-1-1-eap-select-and-use-your-favourite-code-style/) out
