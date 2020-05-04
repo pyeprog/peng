@@ -19,7 +19,7 @@ download_project(
         GIT_REPOSITORY https://github.com/pmp-library/pmp-library.git
         GIT_TAG 1.2.0
         UPDATE_DISCONNECTED 1
-        SOURCE_DIR ${CMAKE_SOURCE_DIR}/extern
+        SOURCE_DIR ${CMAKE_SOURCE_DIR}/extern/pmp-library
         BINARY_DIR ${CMAKE_SOURCE_DIR}
 )
 add_subdirectory(${CMAKE_SOURCE_DIR}/extern/pmp-library ${CMAKE_BINARY_DIR}/pmp-library)
@@ -28,8 +28,7 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/extern/pmp-library ${CMAKE_BINARY_DIR}/pmp-
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
-
-add_executable(app src/main.cpp test/test_empty.cpp)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/quad_mesher)
 
 option(ENABLE_TESTING "Enable Test Builds" ON)
 if (ENABLE_TESTING)
