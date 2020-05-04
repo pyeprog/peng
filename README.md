@@ -29,7 +29,7 @@ For now, no special rules are set for its project, If you wanna contribute to th
     - the executable in software repository of each linux distro might be outdated, install the lastest cmake [via](https://cmake.org/install/) 
 2. gcc / clang / msvc
     - install one of them is enough
-3. conan
+3. conan(>=1.24)
     - download [conan](https://docs.conan.io/en/latest/introduction.html#) via pip: `pip install conan`
     - make a default profile: `conan profile new default --detect --force`
 

@@ -36,3 +36,4 @@
 # build
 build
 extern
+cmake-build-debug
