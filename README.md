@@ -41,9 +41,7 @@ For now, no special rules are set for its project, If you wanna contribute to th
 4. Find the lib file at `YOUR_PROJECT_DIR/build/src/libMeshGenerator.a`
 
 ## 3rd party lib
-1. mesquite. One of the core components of our implement, mainly for optimizing quadmesh
-2. pybind11, for wrapping a python module of the quadmesh library
-3. pmp-library: consider as a must
+1. pmp-library: consider as a must
 
 ## How to test
 After compiling the whole program, you can find a tests executable file in `YOUR_PROJECT_DIR/build/test`.
