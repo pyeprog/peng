@@ -20,4 +20,5 @@ class Coordinate {
   std::array<double, N_DIM> coords_;
 };
 
+typedef Coordinate<2> Coord2D;
 }

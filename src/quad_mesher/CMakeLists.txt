@@ -1,9 +1,10 @@
 add_library(quadmesh placeholder.cpp)
-target_include_directories(quadmesh PUBLIC model)
+include(algorithm/CMakeLists.txt)
+include(model/CMakeLists.txt)
 target_link_libraries(quadmesh PUBLIC pmp project_warning project_options)
-get_target_property(PMP_INCLUDE_DIR pmp INCLUDE_DIRECTORIES)
-target_include_directories(quadmesh PUBLIC ${PMP_INCLUDE_DIR})
 
-add_executable(playground playground.cpp model/coordinate.h)
+target_include_directories(quadmesh PUBLIC pmp)
+
+add_executable(playground playground.cpp)
 target_link_libraries(playground PRIVATE quadmesh)
 
